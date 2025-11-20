@@ -1,17 +1,26 @@
 <?php
+<?php
+//Démarrer la session
+session_start();
+
+//IMPORT DE RESSOURCE
+include './Model/model_user.php';
+
 if(isset($_POST['enregistrer_task'])){
     //Etape de Sécurité 1 : Vérifier les champs vides
-    if(!empty($_POST['task'])){
+    if(!empty($_POST['name_task']) && !empty($_POST['content_task']) && !empty($_POST['date_task'])){
         //Etape de Sécurité 2 : Vérifier le Format -> aucun format à vérifier ici sauf utilisé une Regex
         //Etape de Sécurité 3 : Nettoyage des données
-        $task = htmlentities(stripslashes(strip_tags(trim($_POST['task']))));
+        $name_task = htmlentities(stripslashes(strip_tags(trim($_POST['name_task']))));
+        $content_task = htmlentities(strislashes(strip_tags(trim($_POST['content_task']))));
+        $date_task = htmlentities(stripslashes(strip_tags(trim($_POST['date_task']))));
         
 
         //Créer l'objet de connexion PDO
         $bdd = new PDO('mysql:host=localhost;dbname=task','root','root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
         //Try...catch pour communiquer avec la BDD :
-        $data = readUserByNickname($bdd,$nickname);
+        $data = addTask($bdd, $name, $content, $date);
 
         echo "Print_r(\$data) pour savoir ce qu'il y a dedans </br>";
         print_r($data);

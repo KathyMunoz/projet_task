@@ -4,6 +4,7 @@ session_start();
 
 //IMPORT DE RESSOURCE
 include './Model/model_user.php';
+include './Model/model_task.php';
 
 //Initialiser ma variable d'affichage
 $title = 'accueil TODO LIST';
@@ -107,6 +108,8 @@ if(isset($_POST['signUp'])){
                 //J'affiche le message de confirmation
                 $messageCo = "{$_SESSION['nickname']} est connecté";
 
+                header("Location: view_task.php");
+                exit();
             }else{
                 $messageCo = "Problème de Login et/ou Mot de Passe";
             }
