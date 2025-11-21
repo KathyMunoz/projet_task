@@ -90,8 +90,8 @@ if(isset($_POST['signUp'])){
         //Try...catch pour communiquer avec la BDD :
         $data = readUserByNickname($bdd,$nickname);
 
-        echo "Print_r(\$data) pour savoir ce qu'il y a dedans </br>";
-        print_r($data);
+        
+       print_r($data);
 
         if(!empty($data)){
             //$data non vide, donc je reçois le compte de l'utilisateur
@@ -108,8 +108,7 @@ if(isset($_POST['signUp'])){
                 //J'affiche le message de confirmation
                 $messageCo = "{$_SESSION['nickname']} est connecté";
 
-                header("Location: view_task.php");
-                exit();
+                
             }else{
                 $messageCo = "Problème de Login et/ou Mot de Passe";
             }

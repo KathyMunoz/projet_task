@@ -54,9 +54,9 @@ function createUser($bdd,$nickname,$email,$password){
                         //1er paramètre : position du ? dans la requête
                         //2nd paramètre : valeur à insérer dans la requête
                         //3eme paramètre : format du paramètre (classiquement : STRING ou INT)
-                        $req->bindParam(1,$nickname,PDO::PARAM_STR);
-                        $req->bindParam(2,$email,PDO::PARAM_STR);
-                        $req->bindParam(3,$password,PDO::PARAM_STR);
+                        $req->bindParam(1, $nickname,PDO::PARAM_STR);
+                        $req->bindParam(2, $email,PDO::PARAM_STR);
+                        $req->bindParam(3, $password,PDO::PARAM_STR);
 
                         //Etape 6.3 : Envoyer la requête
                         $req->execute();

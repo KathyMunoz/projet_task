@@ -21,11 +21,16 @@
                         case 'accueil TODO LIST' :
                             echo "<li><a href='./info.php'>Vos Infos</a></li>";
                             break;
-                    }
-
+                            
+                        }
                     if(isset($_SESSION['nickname'])){
+                        // Lien pour se déconnecter
                         echo "<li><a href='./deco.php'>Se Deconnecter</a></li>";
+                        // Lien vers task.php
+                        echo "<li><a href='./task.php'>Mes Tâches</a></li>";
+                    
                     }
+                    
                 ?>
                 
             </ul>
