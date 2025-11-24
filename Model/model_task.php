@@ -1,9 +1,9 @@
 <?php
 function createTask($bdd, $name, $content, $date, $id_user){
 try{
-  $req = $bdd->prepare("INSERT INTO task (name_task, content_task, date_task, id_user) VALUES  (?,?,?,?)");
+  $req = $bdd->prepare("INSERT INTO task (name_task, content_task, date_task, id_user) VALUES  (?,?,?,?)");//prepare renvoie un objet 
 
-  $req->bindParam(1, $name, PDO::PARAM_STR);
+  $req->bindParam(1, $name, PDO::PARAM_STR);//jappele mon objet qui est dans $req et je rempli son bindParam
   $req->bindParam(2, $content, PDO::PARAM_STR);
   $req->bindParam(3, $date, PDO::PARAM_STR);
   $req->bindParam(4, $id_user, PDO::PARAM_INT);
@@ -12,12 +12,13 @@ try{
 
   $req->execute(); // j'ai "executé" ma requête en base de donnée
   $data = $req->fetchAll();
-
+   
   // Pour remplir task_category il nous faut le id_task de la tâche qu'on vient d'inserer. On peut l'avoir à l'aide de $bdd->lastInsertId()
   $task_id = $bdd->lastInsertId();//lastInsertId() ça retourne la clé primaire de la derniere requete inserer
   $message = "La tâche a bien été enregistrée !";
 
     return ['task_id' => $task_id, 'message_task' => $message];
+    // return "$name a été ajouté à la liste des taches";
   }catch(EXCEPTION $error){
                     die($error->getMessage());
                 }

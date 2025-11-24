@@ -21,6 +21,8 @@
                         case 'accueil TODO LIST' :
                             echo "<li><a href='./info.php'>Vos Infos</a></li>";
                             break;
+                        case 'Mes tâches' :
+                            echo "<li><a href='./task.php'>Mes tâches</a></li>";
                             
                         }
                     if(isset($_SESSION['nickname'])){
